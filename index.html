@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<title>私聊房间</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- 启动 -->
+<div id="boot" class="boot"><div class="spin"></div><p>加载中…</p></div>
+
+<!-- 落地页 -->
+<section id="view-landing" class="view hidden">
+  <div class="landing">
+    <div class="brand">
+      <div class="brand-mark">💬</div>
+      <h1>私聊房间</h1>
+      <p class="sub">建一个自己的小房间，把链接或二维码发给朋友就能开聊。<br>没有注册、没有广场、没有推荐。</p>
+    </div>
+    <div class="landing-actions">
+      <button class="btn primary lg" id="go-create">＋ 创建我的房间</button>
+      <button class="btn ghost lg" id="go-join">🔗 我有邀请链接</button>
+    </div>
+    <div class="feats">
+      <div class="feat"><span>🏠</span><b>房间</b><p>名字、封面、简介全由你定</p></div>
+      <div class="feat"><span>✉️</span><b>邀请</b><p>链接 / 二维码进房，无需注册</p></div>
+      <div class="feat"><span>🛡️</span><b>管理</b><p>踢人、禁言、设管理员</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 受邀加入 -->
+<section id="view-join" class="view hidden">
+  <div class="join-wrap">
+    <div class="join-card">
+      <div id="join-preview" class="join-preview"></div>
+      <div class="join-form">
+        <label class="field">
+          <span>我的昵称</span>
+          <input id="join-nickname" maxlength="24" placeholder="别人怎么称呼你" autocomplete="off">
+        </label>
+        <label class="field">
+          <span>一句话介绍 <i>（可留空）</i></span>
+          <input id="join-bio" maxlength="80" placeholder="比如：爱爬山，周末常在线" autocomplete="off">
+        </label>
+        <div class="field">
+          <span>头像</span>
+          <div id="join-avatar" class="picker-slot"></div>
+        </div>
+        <div id="join-error" class="form-error hidden"></div>
+        <button class="btn primary lg wide" id="join-submit">加入房间</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 主界面 -->
+<section id="view-app" class="view hidden">
+  <div class="scrim" id="scrim"></div>
+  <aside id="sidebar" class="sidebar">
+    <div class="me-card">
+      <div id="me-avatar" class="av av-44"></div>
+      <div class="me-info">
+        <div class="me-name" id="me-name">—</div>
+        <div class="me-bio" id="me-bio"></div>
+      </div>
+      <button class="icon-btn" id="edit-profile" title="编辑我的资料">✏️</button>
+    </div>
+    <div class="side-actions">
+      <button class="btn soft sm" id="side-create">＋ 建房间</button>
+      <button class="btn soft sm" id="side-join">加入</button>
+    </div>
+    <div class="room-list" id="room-list"></div>
+    <div class="side-foot">
+      <span id="conn-state" class="conn">连接中…</span>
+      <button class="link-btn" id="logout">退出登录</button>
+    </div>
+  </aside>
+
+  <main id="chat" class="chat">
+    <header class="chat-head">
+      <button class="icon-btn only-mobile" id="btn-back" title="房间列表">☰</button>
+      <div id="chat-cover" class="av av-36 room-cover"></div>
+      <div class="chat-title">
+        <div class="chat-name" id="chat-name">还没选房间</div>
+        <div class="chat-sub" id="chat-sub">建一个房间，把链接发给朋友</div>
+      </div>
+      <div class="chat-tools">
+        <button class="icon-btn" id="btn-invite" title="邀请朋友">🔗</button>
+        <button class="icon-btn" id="btn-panel" title="成员与设置">👥</button>
+      </div>
+    </header>
+
+    <div class="msg-scroll" id="msg-scroll">
+      <div class="msg-list" id="msg-list"></div>
+    </div>
+
+    <div class="mute-bar hidden" id="mute-bar"></div>
+
+    <div class="composer" id="composer">
+      <button class="icon-btn emoji-trigger" id="btn-emoji" title="表情">😊</button>
+      <textarea id="composer-input" rows="1" placeholder="说点什么…" maxlength="2000"></textarea>
+      <button class="btn primary send-btn" id="btn-send">发送</button>
+    </div>
+  </main>
+
+  <aside id="panel" class="panel hidden">
+    <div class="panel-head">
+      <div class="tabs" id="panel-tabs">
+        <button class="tab active" data-tab="members">成员</button>
+        <button class="tab" data-tab="invite">邀请</button>
+        <button class="tab" data-tab="room">房间</button>
+      </div>
+      <button class="icon-btn" id="panel-close">✕</button>
+    </div>
+    <div class="panel-body" id="panel-body"></div>
+  </aside>
+</section>
+
+<div id="modal-root" class="modal-root hidden"></div>
+<div id="emoji-pop" class="emoji-pop hidden"></div>
+<div id="toast" class="toast"></div>
+<div id="lightbox" class="lightbox hidden"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
